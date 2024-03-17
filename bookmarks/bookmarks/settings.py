@@ -48,6 +48,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentications.EmailAuthBackend',
+]
+
 ROOT_URLCONF = 'bookmarks.urls'
 
 TEMPLATES = [
