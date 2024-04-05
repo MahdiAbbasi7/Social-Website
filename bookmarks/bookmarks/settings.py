@@ -56,6 +56,7 @@ AUTHENTICATION_BACKENDS = [
     'account.authentications.EmailAuthBackend',
     # 'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.google.GoogleOAuth2',
 ]
 
 ROOT_URLCONF = 'bookmarks.urls'
@@ -138,6 +139,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+SOCIAL_AUTH_TWITTER_KEY = 'flVM1yUsjN2VwKnYNeoHNlaND'  # Twitter API Key
+SOCIAL_AUTH_TWITTER_SECRET = 'WZVXec6ooM02ZNHb68q9I5WTcDGlZEkYhktfrwbNXPMWMCEOXa'  # Twitter API Secret
 
-SOCIAL_AUTH_TWITTER_KEY = 'flVM1yUsjN2VwKnYNeoHNlaND' # Twitter API Key
-SOCIAL_AUTH_TWITTER_SECRET = 'WZVXec6ooM02ZNHb68q9I5WTcDGlZEkYhktfrwbNXPMWMCEOXa' # Twitter API Secret
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '895299643406-j0ul7dhg848k3oqq8rmfclppous0fqtb.apps.googleusercontent.com'  # Google Client ID
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'  # Google Client Secret
