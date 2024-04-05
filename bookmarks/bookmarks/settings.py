@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from . import oauth_sec
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -139,8 +140,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-SOCIAL_AUTH_TWITTER_KEY = 'flVM1yUsjN2VwKnYNeoHNlaND'  # Twitter API Key
-SOCIAL_AUTH_TWITTER_SECRET = 'WZVXec6ooM02ZNHb68q9I5WTcDGlZEkYhktfrwbNXPMWMCEOXa'  # Twitter API Secret
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '895299643406-j0ul7dhg848k3oqq8rmfclppous0fqtb.apps.googleusercontent.com'  # Google Client ID
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'  # Google Client Secret
+
+SOCIAL_AUTH_TWITTER_KEY = oauth_sec.SOCIAL_AUTH_TWITTER_KEY_oauth  # Twitter API Key
+SOCIAL_AUTH_TWITTER_SECRET = oauth_sec.SOCIAL_AUTH_TWITTER_SECRET_oauth # Twitter API Secret
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = oauth_sec.SOCIAL_AUTH_GOOGLE_OAUTH2_KEY_oauth  # Google Client ID
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = oauth_sec.SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET_oauth  # Google Client Secret
