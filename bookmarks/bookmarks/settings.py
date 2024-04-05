@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'social_django',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +54,8 @@ MIDDLEWARE = [
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'account.authentications.EmailAuthBackend',
+    # 'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
 ]
 
 ROOT_URLCONF = 'bookmarks.urls'
@@ -134,3 +137,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+
+SOCIAL_AUTH_TWITTER_KEY = 'flVM1yUsjN2VwKnYNeoHNlaND' # Twitter API Key
+SOCIAL_AUTH_TWITTER_SECRET = 'WZVXec6ooM02ZNHb68q9I5WTcDGlZEkYhktfrwbNXPMWMCEOXa' # Twitter API Secret
