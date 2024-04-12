@@ -14,33 +14,29 @@ class ImageCreateForm(forms.ModelForm):
         }
 
     def clean_url(self):
-        """
-        check that the filename ends with a jpg, jpeg, png extension to allow sharing JPEG and PNG files only.
-        url = "https://example.com/image.jpg"
-        ['https://example.com/image', 'jpg']
-        url.rsplit('.', 1)[1]: 'jpg'
-        and lower()
-        """
         url = self.cleaned_data['url']
-        valid_extensions = ['jpg', 'png', 'jpeg']
+        valid_extensions = ['jpg', 'jpeg', 'png']
         extension = url.rsplit('.', 1)[1].lower()
         if extension not in valid_extensions:
-            raise forms.ValidationError('The given URL does not '
+            raise forms.ValidationError('The given URL does not ' \
                                         'match valid image extensions.')
         return url
+
+    # todo : fix     (Hidden field url) This field is required.
 
     def save(self, force_insert=False,
              force_update=False,
              commit=True):
         image = super().save(commit=False)
-
-        image_url = self.cleaned_data['url']
+        image_url = self.cleaned_data.get('url')
         name = slugify(image.title)
         extension = image_url.rsplit('.', 1)[1].lower()
         image_name = f'{name}.{extension}'
         # download image from the given URL
         response = requests.get(image_url)
-        image.image.save(image_name, ContentFile(response.content), save=False)
+        image.image.save(image_name,
+                         ContentFile(response.content),
+                         save=False)
         if commit:
             image.save()
         return image
