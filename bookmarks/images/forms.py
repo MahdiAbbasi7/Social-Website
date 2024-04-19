@@ -22,13 +22,11 @@ class ImageCreateForm(forms.ModelForm):
                                         'match valid image extensions.')
         return url
 
-    # todo : fix     (Hidden field url) This field is required.
-
     def save(self, force_insert=False,
              force_update=False,
              commit=True):
         image = super().save(commit=False)
-        image_url = self.cleaned_data.get('url')
+        image_url = self.cleaned_data['url']
         name = slugify(image.title)
         extension = image_url.rsplit('.', 1)[1].lower()
         image_name = f'{name}.{extension}'
