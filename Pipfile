@@ -8,6 +8,7 @@ django = "*"
 pillow = "*"
 social-auth-app-django = "*"
 requests = "*"
+easy-thumbnails = "*"
 
 [dev-packages]
 
