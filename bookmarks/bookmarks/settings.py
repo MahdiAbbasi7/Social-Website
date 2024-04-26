@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -148,3 +149,7 @@ SOCIAL_AUTH_TWITTER_SECRET = 'WZVXec6ooM02ZNHb68q9I5WTcDGlZEkYhktfrwbNXPMWMCEOXa
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '895299643406-j0ul7dhg848k3oqq8rmfclppous0fqtb.apps.googleusercontent.com'  # Google Client ID
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'  # Google Client Secret
+
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: reverse_lazy('user_detail', args=[u.username])
+}
