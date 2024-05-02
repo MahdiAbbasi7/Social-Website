@@ -107,7 +107,7 @@ def user_detail(request, username):
 @login_required
 def user_follow(request):
     user_id = request.POST.get('id')
-    action = request.POST.get('follow')
+    action = request.POST.get('action')
     if user_id and action:
         try:
             user = User.objects.get(id=user_id)
@@ -121,7 +121,6 @@ def user_follow(request):
                                        user_to=user).delete()
             return JsonResponse({'status': 'ok'})
 
-        # todo : fix follow system and add unfollow feature
-        except:
+        except FileNotFoundError:
             return JsonResponse({'status': 'ko'})
     return JsonResponse({'status': 'error'})
