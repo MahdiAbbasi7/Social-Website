@@ -159,3 +159,7 @@ ABSOLUTE_URL_OVERRIDES = {
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379  # or 6377
+REDIS_DB = 0

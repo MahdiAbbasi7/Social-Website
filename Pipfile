@@ -9,6 +9,8 @@ pillow = "*"
 social-auth-app-django = "*"
 requests = "*"
 easy-thumbnails = "*"
+django-debug-toolbar = "*"
+redis = "*"
 
 [dev-packages]
 
